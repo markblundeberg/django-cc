@@ -79,8 +79,8 @@ class Wallet(models.Model):
         deposite_wallet.save()
 
     def withdraw_to_address(self, address, amount, description=""):
-        if not validate(address, self.currency.magicbyte):
-            raise ValueError('Invalid address')
+        #if not validate(address, self.currency.magicbyte):
+            #raise ValueError('Invalid address')
 
         if amount < 0:
             raise ValueError('Invalid amount')
