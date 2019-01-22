@@ -162,7 +162,7 @@ class Operation(models.Model):
 
 
 class Address(models.Model):
-    address = models.CharField(_('Address'), max_length=50, primary_key=True)
+    address = models.CharField(_('Address'), max_length=60, primary_key=True)
     currency = models.ForeignKey('Currency', on_delete=models.CASCADE)
     created = models.DateTimeField(_('Created'), default=now)
     active = models.BooleanField(_('Active'), default=True)
@@ -190,7 +190,7 @@ class Currency(models.Model):
 
 class Transaction(models.Model):
     txid = models.CharField(_('Txid'), max_length=100)
-    address = models.CharField(_('Address'), max_length=50)
+    address = models.CharField(_('Address'), max_length=60)
     currency = models.ForeignKey('Currency', on_delete=models.CASCADE)
     processed = models.BooleanField(_('Processed'), default=False)
 
@@ -209,7 +209,7 @@ class WithdrawTransaction(models.Model):
     )
     currency = models.ForeignKey('Currency', on_delete=models.CASCADE)
     amount = models.DecimalField(_('Amount'), max_digits=18, decimal_places=8)
-    address = models.CharField(_('Address'), max_length=50)
+    address = models.CharField(_('Address'), max_length=60)
     wallet = models.ForeignKey(Wallet, on_delete=models.CASCADE)
     created = models.DateTimeField(_('Created'), default=now)
     txid = models.CharField(_('Txid'), max_length=100, blank=True, null=True, db_index=True)
